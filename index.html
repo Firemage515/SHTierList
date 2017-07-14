@@ -117,7 +117,14 @@
 		
 		// character images
 		var singleChar = "<div class='character'></div>";
-		
+		var gameSmash4 = ["ssb4","mario","luigi","peach","bowser","yoshi","rosalinaluma","bowserjr","wario","donkeykong","diddykong","mrgamewatch","littlemac","link","zelda","sheik","ganondorf","toonlink","samus","zerosuitsamus","pit","palutena","marth","ike","robin","duckhunt","kirby","kingdedede","metaknight","fox","falco","pikachu","charizard","lucario","jigglypuff","greninja","rob","ness","captainfalcon","villager","olimar","wiifittrainer","shulk","drmario","darkpit","lucina","pacman","megaman","sonic","mewtwo","lucas","roy","ryu","cloud","corrin","bayonetta","miibrawler","miigunner","miisword"];
+		var gameMelee = ["melee","drmario","mario","luigi","bowser","peach","yoshi","dk","falcon","ganon","falco","fox","ness","icies","kirby","samus","zelda","sheik","link","ylink","pichu","pikachu","jigglypuff","mewtwo","gnw","marth","roy"];
+		var game64 = ["64","luigi","mario","dk","link","samus","falcon","ness","yoshi","kirby","fox","pikachu","jigglypuff"];
+		var gameBrawl = ["brawl","mario","luigi","peach","bowser","donkeykong","diddykong","yoshi","wario","link","zelda","sheik","ganondorf","toonlink","samus","zerosuitsamus","pit","iceclimbers","rob","kirby","metaknight","kingdedede","olimar","fox","falco","wolf","captainfalcon","pikachu","pokemontrainer","lucario","jigglypuff","marth","ike","ness","lucas","mrgamewatch","snake","sonic"];
+		var gamePM = ["pm","wario","mario","luigi","peach","bowser","yoshi","donkeykong","diddykong","falcon","wolf","fox","falco","icies","zelda","sheik","link","toonlink","ganon","mewtwo","lucario","pikachu","jigglypuff","squirtle","ivysaur","charizard","samus","zerosuit","lucas","ness","pit","kirby","metaknight","dedede","ike","marth","roy","olimar","rob","gnw","snake","sonic"];
+		var gameSFV = ["sfv","alex","balrog","birdie","cammy","chunli","dhalsim","fang","guile","ibuki","karin","ken","laura","mbison","nash","necalli","rashid","rmika","ryu","vega","zangief","juri"];
+		var gameGGREV = ["ggrev","axl","bedman","chipp","elphelt","faust","ino","jacko","jam","johnny","kum","ky","leo","may","millia","potemkin","ramlethal","raven","sin","slayer","sol","venom","zato1","dizzy"];
+		var gameSSF2 = ["ssf2","mario","dk","link","kirby","samus","megaman","fox","ness","pikachu","sonic","peach","wario","zelda","sheik","metaknight","zss","bomberman","falcon","blackmage","jigglypuff","tails","yoshi","marth","lloyd","chibirobo","sora","ichigo","naruto","goku"];
 		var gameSH = ["sh","botmon","cluck","cakemonster","bulk","tinman","marauder","spooder","greenhood","sgt","sanic","cryomancer","karakot","skullfire","shoop","voidcrawler","pug"];
 		var gameMW = ["mw","herobrine","squid","enderman","zombie","skeleton","spider","creeper","dreadlord","shaman","arcanist","golem","pigman","hunter","blaze","pirate","phoenix","moleman","pirate"];
 		
@@ -140,7 +147,7 @@
 		var tierIndex;
 		var currentColor;
 		var colorIndex;
-		var currentGame = gameSH;
+		var currentGame;
 		var currentGameChars = gameSH;
 		var characters;
 					  
@@ -191,8 +198,17 @@
 		$(document).on("click", "#gameChange button", function() { // change game
 			console.log("game switching");
 			switch($(this).attr("id")) {
+				case "switch64": changeGame(game64);break;
+				case "switchMelee": changeGame(gameMelee);break;
+				case "switchBrawl": changeGame(gameBrawl);break;
+				case "switchPM": changeGame(gamePM);break;
+				case "switchSmash4": changeGame(gameSmash4);break;
+				case "switchSFV": changeGame(gameSFV);break;
+				case "switchGGREV": changeGame(gameGGREV);break;
+				case "switchSSF2": changeGame(gameSSF2);break;
 				case "switchSH": changeGame(gameSH);break;
 				case "switchMW": changeGame(gameMW);break;
+			}
 		});
 			
 		$(document).on("click", function(e) {
@@ -262,10 +278,17 @@
 				loadCode($("#exportcode").val());
 			} else if (clicked == "reset") {
 				switch(currentGameChars[0]) {
+					case "64": changeGame(game64);break;
+					case "melee": changeGame(gameMelee);break;
+					case "brawl": changeGame(gameBrawl);break;
+					case "pm": changeGame(gamePM);break;
+					case "ssb4": changeGame(gameSmash4);break;
+					case "sfv": changeGame(gameSFV);break;
+					case "ggrev": changeGame(gameGGREV);break;
+					case "ssf2": changeGame(gameSSF2);break;
 					case "sh": changeGame(gameSH);break;
 					case "mw": changeGame(gameMW);break;
 				}
-        
 				loadCode(currentGameChars[0]+"==S|0==A|1==B|3==C|5==D|7==E|8==F|9");
 			}
 		});
@@ -357,10 +380,17 @@
 			});
 			console.log(processedCode);
 			switch(processedCode[0][0]) {
+				case "64": changeGame(game64);break;
+				case "melee": changeGame(gameMelee);break;
+				case "brawl": changeGame(gameBrawl);break;
+				case "pm": changeGame(gamePM);break;
+				case "ssb4": changeGame(gameSmash4);break;
+				case "sfv": changeGame(gameSFV);break;
+				case "ggrev": changeGame(gameGGREV);break;
+				case "ssf2": changeGame(gameSSF2);break;
 				case "sh": changeGame(gameSH);break;
 				case "mw": changeGame(gameMW);break;
 			}
-
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
 				$("tr:last-of-type").find(".labelHolder").css("background-color",colors[processedCode[i][1]]);
@@ -388,7 +418,7 @@
 		$(document).ready( function() {
 			$("#char").html("<div></div>");
 			if (localStorage.getItem("TierListMakerCode") === null)
-				changeGame(gameSH);
+				changeGame(gameSmash4);
 			else {
 				$("#exportcode").val(localStorage.getItem("TierListMakerCode"));
 				loadCode(localStorage.getItem("TierListMakerCode"));
