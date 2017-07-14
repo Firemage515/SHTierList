@@ -14,7 +14,7 @@
 		<div id="buttons">
 			<button id="screenshot">Share</button>
 			<button id="hidebuttons">Hide controls</button>
-			<!--<button id="game">Change game</button>-->
+			<button id="game">Change game</button>
 			<!--<button id="help">Help</button>-->
 			<button id="reset">Reset</button>
 		</div>
@@ -79,15 +79,8 @@
 				<h1>CHANGE GAME</h1>
 				<span id="close"></span>
 				<div id="switchButtons">
-					<button id="switch64">Super Smash Bros. 64</button>
-					<button id="switchMelee">Super Smash Bros. Melee</button>
-					<button id="switchBrawl">Super Smash Bros. Brawl</button>
-					<button id="switchSmash4">Super Smash Bros. 4</button><br>
-					<button id="switchPM">Project M</button>
-					<button id="switchSSF2">Super Smash Flash 2</button><br>
-					<button id="switchSFV">Street Fighter V</button>
-					<button id="switchGGREV">Guilty Gear Xrd -Revelator-</button>
 					<button id="switchSH">Smash Heroes</button>
+					<button id="switchMW">Mega Walls </button>
 				</div>
 				<p><strong>Changing your game will empty your tierlist!</strong> Do not click unless you are sure you want to change! You cannot undo this.</p>
 			</div>
@@ -133,6 +126,7 @@
 		var gameGGREV = ["ggrev","axl","bedman","chipp","elphelt","faust","ino","jacko","jam","johnny","kum","ky","leo","may","millia","potemkin","ramlethal","raven","sin","slayer","sol","venom","zato1","dizzy"];
 		var gameSSF2 = ["ssf2","mario","dk","link","kirby","samus","megaman","fox","ness","pikachu","sonic","peach","wario","zelda","sheik","metaknight","zss","bomberman","falcon","blackmage","jigglypuff","tails","yoshi","marth","lloyd","chibirobo","sora","ichigo","naruto","goku"];
 		var gameSH = ["sh","botmon","cluck","cakemonster","bulk","tinman","marauder","spooder","greenhood","sgt","sanic","cryomancer","karakot","skullfire","shoop","voidcrawler","pug"];
+		var gameMW = ["mw","herobrine","squid","enderman","zombie","skeleton","spider","creeper","dreadlord","shaman","arcanist","golem","pigman","hunter","blaze","pirate","phoenix","moleman","pirate"];
 		
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
@@ -213,6 +207,7 @@
 				case "switchGGREV": changeGame(gameGGREV);break;
 				case "switchSSF2": changeGame(gameSSF2);break;
 				case "switchSH": changeGame(gameSH);break;
+				case "switchMW": changeGame(gameMW);break;
 			}
 		});
 			
@@ -292,6 +287,7 @@
 					case "ggrev": changeGame(gameGGREV);break;
 					case "ssf2": changeGame(gameSSF2);break;
 					case "sh": changeGame(gameSH);break;
+					case "mw": changeGame(gameMW);break;
 				}
 				loadCode(currentGameChars[0]+"==S|0==A|1==B|3==C|5==D|7==E|8==F|9");
 			}
@@ -393,6 +389,7 @@
 				case "ggrev": changeGame(gameGGREV);break;
 				case "ssf2": changeGame(gameSSF2);break;
 				case "sh": changeGame(gameSH);break;
+				case "mw": changeGame(gameMW);break;
 			}
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
